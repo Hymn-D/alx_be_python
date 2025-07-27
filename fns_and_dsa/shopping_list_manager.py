@@ -5,33 +5,30 @@ def display_menu():
     print("3. View List")
     print("4. Exit")
 
-def main():
+def main( Chicken="none", beef="none", Tuna="none", Mackerel="none", Eggs="none", Apples="none", Bananas="none", Tomatoes="none", Onions="none", Carrots="none", Spinach="none", Garlic="none"):
     shopping_list = []
     while True:
         display_menu()
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            item = input("Enter the item to add: ")
-            shopping_list.append(item)
-            print(f'"{item}" has been added.')
-
+            item = input("Enter the item to add: ").strip()
+            if item:
+                shopping_list.append(item)
+            pass
         elif choice == '2':
-            item = input("Enter the item to remove: ")
+            item = input("Enter the item to remove: ").strip()
             if item in shopping_list:
                 shopping_list.remove(item)
-                print(f'"{item}" has been removed.')
-            else:
-                print(f'"{item}" not found in the list.')
-
+            pass
         elif choice == '3':
             if shopping_list:
-                print("Current Shopping List:")
-                for i, item in enumerate(shopping_list, 1):
-                    print(f"{i}. {item}")
+                print("\nCurrent Shopping List: ")
+                for idx, item in enumerate(shopping_list, start=1):
+                    print(f"{idx}. {item}")
             else:
-                print("shopping list is currently empty.")
-
+                print("Your shopping list is currently empty.")
+            pass
         elif choice == '4':
             print("Goodbye!")
             break
